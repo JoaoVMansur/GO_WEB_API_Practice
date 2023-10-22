@@ -6,4 +6,4 @@ GET /albums/{id}: This route retrieves the album corresponding to the provided I
 
 POST /albums: This route adds a new album to the database.
 
-DELETE /albums/{is}: This route delete an album specified by its ID
+DELETE /albums/{id}: This route delete an album specified by its ID
