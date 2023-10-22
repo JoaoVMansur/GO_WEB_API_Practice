@@ -38,10 +38,10 @@ func main() {
 	}
 	router := gin.Default()
 	router.GET("/albums", getAlbums)
-	router.GET("/albums/:id", getAlbumsId)
 	router.POST("/albums", postAlbums)
+	router.GET("/albums/:id", getAlbumsId)
 	router.DELETE("/albums/:id", deleteAlbum)
-	// router.PUT("/albums/:id", updateAlbum)
+	router.PUT("/albums/:id", updateAlbum)
 	router.Run("localhost:8080")
 
 }

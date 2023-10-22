@@ -96,3 +96,24 @@ func deleteAlbum(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"message": "Album deleted successfully"})
 }
+
+func updateAlbum(c *gin.Context) {
+	var updtAlb Album
+	id, err := strconv.ParseInt(c.Param("id"), 10, 64)
+
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
+		return
+	}
+	if err := c.BindJSON(&updtAlb); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	result, err := db.Exec("UPDATE album SET Title = ?, Artist = ?, Price = ? WHERE id = ?", updtAlb.Title, updtAlb.Artist, updtAlb.Price, id)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, result)
+}
