@@ -1,4 +1,4 @@
-In this Golang API practice, we have 3 routes:
+In this Golang API practice, we have 6 routes:
 
 GET /albums: This route retrieves the list of all albums from the database.
 
